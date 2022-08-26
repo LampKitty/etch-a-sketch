@@ -6,14 +6,16 @@ body {
     height: 100%;
     /* add flexbox style */
     display: flex;
+    flex-direction: column;
+    gap: 40px;
     align-items: center;
     justify-content: center;
 }
 
 
 .container {
-    width: 1000px;
-    height: 1000px;
+    width: 400px;
+    height: 400px;
     /* add flexbox style */
     display: flex;
     flex-wrap: wrap;
