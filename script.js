@@ -1,9 +1,11 @@
 const container = document.querySelector('.container');
-// loop for creating 16 divs
-for (let i = 1; i <= 16; i++) {
-    const div = document.createElement(`div`);
-    div.classList.add(`div${i}`);
-    container.appendChild(div);
+// loop for creating n tiles per side
+function tilesPerSide() {
+    for (let i = 1; i <= 16; i++) {
+        const div = document.createElement(`div`);
+        div.classList.add(`div${i}`);
+        container.appendChild(div);
+    }
 }
 
 const divList = document.querySelectorAll('.container>div');
@@ -23,7 +25,9 @@ divList.forEach(element =>
 
 const tilesButton = document.querySelector('.tiles');
 function askUserInput() {
-    tilesButton.addEventListener('click', () => 
-    prompt('How many tiles per side?'))
+    tilesButton.addEventListener('click', function() {
+        let userInput = prompt('How many tiles per side?');
+        return userInput;
+    })
 }
 
