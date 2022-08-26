@@ -1,0 +1,21 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    /* add flexbox style */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.container {
+    width: 1000px;
+    height: 1000px;
+    /* add flexbox style */
+    display: flex;
+    flex-wrap: wrap;
+}
+
