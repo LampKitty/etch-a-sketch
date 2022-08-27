@@ -126,3 +126,9 @@ const tilesEvent = tilesButton.addEventListener('click',function() {
     usrInput = userInput;
     tilesPerSide(userInput);
 });
+
+const clearButton = document.querySelector('.clear');
+const clearEvent = clearButton.addEventListener('click', function() {
+    childList.forEach(element =>
+        element.style.backgroundColor = '#a0bdbb')
+})
