@@ -1,15 +1,24 @@
 const container = document.querySelector('.container');
 // loop for creating n tiles per side
-function tilesPerSide() {
-    for (let i = 1; i <= 16; i++) {
-        const div = document.createElement(`div`);
-        div.classList.add(`div${i}`);
-        container.appendChild(div);
+function tilesPerSide(userInput = 0) {
+    if(userInput) {
+        for (let i = 1; i <= userInput; i++) {
+            const div = document.createElement(`div`);
+            div.classList.add(`div${i}`);
+            container.appendChild(div);
+        } 
+    } else {
+        for (let i = 1; i <= 16; i++) {
+            const div = document.createElement(`div`);
+            div.classList.add(`div${i}`);
+            container.appendChild(div);
+        }
     }
+    
 }
-
+tilesPerSide();
 const divList = document.querySelectorAll('.container>div');
-// iterate elements of container and apply attributes to them
+// initialize tiles
 divList.forEach(element =>
     element.setAttribute('style',
     'min-height: 25%; \
@@ -24,10 +33,7 @@ divList.forEach(element =>
 );
 
 const tilesButton = document.querySelector('.tiles');
-function askUserInput() {
-    tilesButton.addEventListener('click', function() {
-        let userInput = prompt('How many tiles per side?');
-        return userInput;
-    })
-}
-
+const tilesEvent = tilesButton.addEventListener('click',function() {
+    userInput = prompt('How many tiles per side?')
+    tilesPerSide(userInput);
+});
