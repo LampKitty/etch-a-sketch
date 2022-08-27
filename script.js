@@ -78,7 +78,7 @@ function whichHover() {
 function mouseHover() {
     childList.forEach(element =>
         element.addEventListener('mouseover', () =>
-            element.style.background = '#f7c3c3')
+            element.style.background = '#383838')
     );
 }
 
