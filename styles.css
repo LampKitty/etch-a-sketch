@@ -2,7 +2,24 @@ html {
     height: 100%;
 }
 
+button {
+    background-color: transparent;
+    border: 1px solid #4d4d4d;
+    color: #333333;
+    font-size: 20px;
+    border-radius: 4px;
+    text-align: center;
+    width: 200px;
+    height: 30px;
+}
+
+button:hover {
+    background-color: #383838;
+    color: #ebebeb;
+}
+
 body {
+    background-color: #ebebeb;
     height: 100%;
     /* add flexbox style */
     display: flex;
@@ -14,6 +31,7 @@ body {
 
 
 .container {
+    box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
     width: 400px;
     height: 400px;
     /* add flexbox style */

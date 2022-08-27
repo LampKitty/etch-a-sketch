@@ -49,7 +49,7 @@ function tileSizing () {
             element.setAttribute('style',
             `max-height: ${tileSize}%; \
             min-width: ${tileSize}%; \
-            background:#a0bdbb; `)
+            background:#fff; `)
         )
         whichHover();
     } else {
@@ -57,13 +57,14 @@ function tileSizing () {
             element.setAttribute('style',
             `max-height: 25%; \
             min-width: 25%; \
-            background:#a0bdbb; `)
+            background:#fff; `)
         )
     }
     
 }
-
+// vars for toggling buttons
 let toggleRainbow = 0;
+let toggleSmooth = 0;
 
 function whichHover() {
     if(toggleRainbow) {
@@ -81,13 +82,21 @@ function mouseHover() {
     );
 }
 
-// rainbow button
+// rainbow mode button
 const rainbowButton = document.querySelector('.rainbow');
 rainbowButton.addEventListener('click', function() {
     toggleRainbow = !toggleRainbow;
-    console.log(toggleRainbow);
+    console.log(`Rainbow: ${toggleRainbow}`);
     rainbowHover();
 })
+
+// // smooth mode button
+// const smoothButton = document.querySelector('.smooth');
+// smoothButton.addEventListener('click', function() {
+//     toggleSmooth = !toggleSmooth;
+//     console.log(`Smooth: ${toggleSmooth}`)
+//     smoothHover();
+// })
 
 // User input button
 const tilesButton = document.querySelector('.tiles');
@@ -107,7 +116,7 @@ const tilesEvent = tilesButton.addEventListener('click',function() {
 const clearButton = document.querySelector('.clear');
 const clearEvent = clearButton.addEventListener('click', function() {
     childList.forEach(element =>
-        element.style.backgroundColor = '#a0bdbb')
+        element.style.backgroundColor = '#fff')
 })
 
 // rainbow mode 
@@ -125,6 +134,22 @@ function rainbowHover() {
     }
     
 }
+
+// // smooth mode
+// function smoothHover() {
+//     if(toggleSmooth) {
+//         childList.forEach(element =>
+//             element.addEventListener('mouseover', function() {
+//                 element.style.background = 
+//                 `rgb(${255},${255},${255})`;
+//                 console.log(element.style.background);
+//             })
+//         );
+//     } else {
+//         mouseHover();
+//     }
+    
+// }
 
 function randomRgb() {
     const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
