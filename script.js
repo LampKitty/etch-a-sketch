@@ -23,6 +23,8 @@ function calculateTileSize(userInput) {
         return (100 / Math.sqrt(userInput));
     }
 }
+
+let usrInput = 0;
 // initialize tiles
 tilesPerSide();
 const divList = document.querySelectorAll('.container>div');
@@ -32,15 +34,25 @@ function isInput(userInput) {
     return Boolean(userInput);
 }
 
-let input = 0;
 
 function tileSizing () {
-    divList.forEach(element =>
-        element.setAttribute('style',
-        `min-height: 25%; \
-        min-width: 25%; \
-        background:#a0bdbb; `)
-    )
+    if(usrInput) {
+        let tileSize = calculateTileSize(usrInput);
+        divList.forEach(element =>
+            element.setAttribute('style',
+            `min-height: ${tileSize}%; \
+            min-width: ${tileSize}%; \
+            background:#a0bdbb; `)
+        )
+    } else {
+        divList.forEach(element =>
+            element.setAttribute('style',
+            `min-height: 25%; \
+            min-width: 25%; \
+            background:#a0bdbb; `)
+        )
+    }
+    
 }
 
 
@@ -53,7 +65,7 @@ divList.forEach(element =>
 const tilesButton = document.querySelector('.tiles');
 const tilesEvent = tilesButton.addEventListener('click',function() {
     userInput = prompt('How many tiles per side?')
-    isInput = isInput(userInput);
+    usrInput = userInput;
     tilesPerSide(userInput);
 });
 
