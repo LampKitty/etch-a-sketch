@@ -72,10 +72,15 @@ function mouseHover(childList) {
     );
 }
 
-
+// Ask user input
 const tilesButton = document.querySelector('.tiles');
 const tilesEvent = tilesButton.addEventListener('click',function() {
-    let userInput = prompt('How many tiles per side?')
+    let userInput = prompt('How many tiles?')
+    if(userInput > 100) {
+        return;
+    } else if (userInput === null) {
+        return;
+    }
     usrInput = userInput;
     tilesPerSide(userInput);
 });
