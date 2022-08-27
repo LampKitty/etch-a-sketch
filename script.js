@@ -35,25 +35,25 @@ function clearNode () {
 let usrInput = 0;
 // initialize tiles
 tilesPerSide(); // create tiles
-const divList = document.querySelectorAll('.container>div');
+let childList = document.querySelectorAll('.container>div');
 tileSizing(); // apply height and size to tiles
-mouseHover(divList);
+mouseHover();
 
 function tileSizing () {
     if(usrInput) {
         // evaluate all divs again
-        const divList = document.querySelectorAll('.container>div');
+        childList = document.querySelectorAll('.container>div');
         // let tileSize = calculateTileSize(usrInput);
         let tileSize = calculateTileSize(usrInput);
-        divList.forEach(element =>
+        childList.forEach(element =>
             element.setAttribute('style',
             `max-height: ${tileSize}%; \
             min-width: ${tileSize}%; \
             background:#a0bdbb; `)
         )
-        mouseHover(divList);
+        whichHover();
     } else {
-        divList.forEach(element =>
+        childList.forEach(element =>
             element.setAttribute('style',
             `max-height: 25%; \
             min-width: 25%; \
@@ -63,13 +63,55 @@ function tileSizing () {
     
 }
 
+let toggleRainbow = 0;
+
+function whichHover() {
+    if(toggleRainbow) {
+        rainbowHover();
+    } else {
+        mouseHover();
+    }
+}
 
 // add 'mouseover' event listeners
-function mouseHover(childList) {
+function mouseHover() {
     childList.forEach(element =>
         element.addEventListener('mouseover', () =>
             element.style.background = '#f7c3c3')
     );
+}
+
+// rainbow button
+const rainbowButton = document.querySelector('.rainbow');
+rainbowButton.addEventListener('click', function() {
+    toggleRainbow = !toggleRainbow;
+    console.log(toggleRainbow);
+    rainbowHover();
+})
+
+// rainbow mode 
+function rainbowHover() {
+    let rgb = 0;
+    if(toggleRainbow) {
+        childList.forEach(element =>
+            element.addEventListener('mouseover', function() {
+                rgb = randomRgb();
+                element.style.background = rgb;
+            })
+        );
+    } else {
+        mouseHover();
+    }
+    
+}
+
+function randomRgb() {
+    const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+    const r = randomBetween(0, 255);
+    const g = randomBetween(0, 255);
+    const b = randomBetween(0, 255);
+    const rgb = `rgb(${r},${g},${b})`;
+    return rgb;
 }
 
 // Ask user input
@@ -84,4 +126,3 @@ const tilesEvent = tilesButton.addEventListener('click',function() {
     usrInput = userInput;
     tilesPerSide(userInput);
 });
-
