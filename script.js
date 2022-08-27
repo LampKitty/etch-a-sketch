@@ -4,7 +4,7 @@ function tilesPerSide(userInput = 16) {
     let result = 0;
     if(userInput != 16) {
         clearNode();
-        for (let i = 1; i <= userInput; i++) {
+        for (let i = 1; i <= Math.pow(userInput,2); i++) {
             const div = document.createElement(`div`);
             div.classList.add(`div${i}`);
             container.appendChild(div);
@@ -22,7 +22,7 @@ function tilesPerSide(userInput = 16) {
 
 function calculateTileSize(userInput) {
     if(userInput != 0) {
-        return (100 / Math.sqrt(userInput));
+        return (100 / userInput);
     }
 }
 
@@ -89,6 +89,27 @@ rainbowButton.addEventListener('click', function() {
     rainbowHover();
 })
 
+// User input button
+const tilesButton = document.querySelector('.tiles');
+const tilesEvent = tilesButton.addEventListener('click',function() {
+    let userInput = prompt('How many tiles per side?(100 max.)')
+    if(userInput > 100) {
+        return;
+    } else if (userInput === null) {
+        alert('Maximum 100 allowed');
+        return;
+    }
+    usrInput = userInput;
+    tilesPerSide(userInput);
+});
+
+// Clear button
+const clearButton = document.querySelector('.clear');
+const clearEvent = clearButton.addEventListener('click', function() {
+    childList.forEach(element =>
+        element.style.backgroundColor = '#a0bdbb')
+})
+
 // rainbow mode 
 function rainbowHover() {
     let rgb = 0;
@@ -114,21 +135,3 @@ function randomRgb() {
     return rgb;
 }
 
-// Ask user input
-const tilesButton = document.querySelector('.tiles');
-const tilesEvent = tilesButton.addEventListener('click',function() {
-    let userInput = prompt('How many tiles?')
-    if(userInput > 100) {
-        return;
-    } else if (userInput === null) {
-        return;
-    }
-    usrInput = userInput;
-    tilesPerSide(userInput);
-});
-
-const clearButton = document.querySelector('.clear');
-const clearEvent = clearButton.addEventListener('click', function() {
-    childList.forEach(element =>
-        element.style.backgroundColor = '#a0bdbb')
-})
